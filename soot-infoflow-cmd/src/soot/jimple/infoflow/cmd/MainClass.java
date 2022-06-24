@@ -914,6 +914,7 @@ public class MainClass {
 			if (staticFlowMode != null && !staticFlowMode.isEmpty())
 				config.setStaticFieldTrackingMode(parseStaticFlowMode(staticFlowMode));
 		}
+
 		{
 			String dataflowDirection = cmd.getOptionValue(OPTION_DATA_FLOW_DIRECTION);
 			if (dataflowDirection != null && !dataflowDirection.isEmpty())

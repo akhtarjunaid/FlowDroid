@@ -235,10 +235,11 @@ public class SetupApplication implements ITaintWrapperDataFlowAnalysis {
 	 * @param apkFileLocation The path to the APK file to be analyzed
 	 * @return The new configuration
 	 */
-	private static InfoflowAndroidConfiguration getConfig(String androidJar, String apkFileLocation) {
+	private static InfoflowAndroidConfiguration getConfig(String androidJar, String apkFileLocation) { //, String analysisDirection) {
 		InfoflowAndroidConfiguration config = new InfoflowAndroidConfiguration();
 		config.getAnalysisFileConfig().setTargetAPKFile(apkFileLocation);
 		config.getAnalysisFileConfig().setAndroidPlatformDir(androidJar);
+		config.setDataFlowDirection(InfoflowConfiguration.DataFlowDirection.Backwards);
 		return config;
 	}
 
@@ -1352,7 +1353,9 @@ public class SetupApplication implements ITaintWrapperDataFlowAnalysis {
 		} finally {
 			config.setTaintAnalysisEnabled(oldRunAnalysis);
 		}
+		// Scene.v().getReachableMethods();
 	}
+
 
 	/**
 	 * Runs the data flow analysis.

@@ -105,6 +105,11 @@ issues, you can use our default file "SourcesAndSinks.txt" in the "soot-infoflow
 For finding out about the other options of the command-line tool, you can run the tool with the "--help" option or have a look at
 the MainClass.initializeCommandLineOptions()" method in the source code (module soot-infoflow-cmd).
 
+### Configuring FlowDroid with specific Analysis Direction
+
+* ```-dir forwards``` Forward is default analysis direction
+* ```-dir backwards``` Runs analysis in backward direction where sources from forward analysis becomes sinks and sinks become sources
+
 ### Configuring FlowDroid for Performance
 
 For some apps, FlowDroid will take very long for large apps. There are various options with which you can configure a tradeoff between performance, precision and recall.

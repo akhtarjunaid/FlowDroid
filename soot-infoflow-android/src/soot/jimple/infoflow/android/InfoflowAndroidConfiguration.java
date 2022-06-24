@@ -28,6 +28,7 @@ public class InfoflowAndroidConfiguration extends InfoflowConfiguration {
 		private String androidPlatformDir = "";
 		private String additionalClasspath = "";
 		private String outputFile = "";
+		private String analysisDirection = "";
 
 		/**
 		 * Copies the settings of the given configuration into this configuration object
@@ -40,6 +41,7 @@ public class InfoflowAndroidConfiguration extends InfoflowConfiguration {
 			this.androidPlatformDir = fileConfig.androidPlatformDir;
 			this.additionalClasspath = fileConfig.additionalClasspath;
 			this.outputFile = fileConfig.outputFile;
+			this.analysisDirection = fileConfig.analysisDirection;
 		}
 
 		/**
@@ -50,7 +52,7 @@ public class InfoflowAndroidConfiguration extends InfoflowConfiguration {
 		 */
 		public boolean validate() {
 			return targetAPKFile != null && !targetAPKFile.isEmpty() && sourceSinkFile != null
-					&& !sourceSinkFile.isEmpty() && androidPlatformDir != null && !androidPlatformDir.isEmpty();
+					&& !sourceSinkFile.isEmpty() && androidPlatformDir != null && !androidPlatformDir.isEmpty() && analysisDirection != null && !analysisDirection.isEmpty();
 		}
 
 		/**
@@ -154,6 +156,14 @@ public class InfoflowAndroidConfiguration extends InfoflowConfiguration {
 			this.outputFile = outputFile;
 		}
 
+		public String getAnalysisDirection() {
+			return analysisDirection;
+		}
+
+		public void setAnalysisDirection(String analysisDirection) {
+			this.analysisDirection = analysisDirection;
+		}
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -163,6 +173,7 @@ public class InfoflowAndroidConfiguration extends InfoflowConfiguration {
 			result = prime * result + ((outputFile == null) ? 0 : outputFile.hashCode());
 			result = prime * result + ((sourceSinkFile == null) ? 0 : sourceSinkFile.hashCode());
 			result = prime * result + ((targetAPKFile == null) ? 0 : targetAPKFile.hashCode());
+			result = prime * result + ((analysisDirection == null) ? 0 : analysisDirection.hashCode());
 			return result;
 		}
 
@@ -199,6 +210,11 @@ public class InfoflowAndroidConfiguration extends InfoflowConfiguration {
 				if (other.targetAPKFile != null)
 					return false;
 			} else if (!targetAPKFile.equals(other.targetAPKFile))
+				return false;
+			if (analysisDirection == null) {
+				if (other.analysisDirection != null)
+					return false;
+			} else if (!analysisDirection.equals(other.analysisDirection))
 				return false;
 			return true;
 		}
